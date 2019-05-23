@@ -1,0 +1,20 @@
+server:
+  port:  9000
+  tomcat:
+    accesslog:
+      directory: ./log
+eureka:
+  client:
+    service-url:
+      defaultZone: # http://<Eureka账号>:<Eureka密码>@<Eureka Host>:<Eureka Port>/eureka/
+  instance:
+    hostname: # Docker中需要获取到真实IP或host，开发在本地可以删掉eureka.instance.hostname这个配置
+spring:
+  redis:
+    host: # redis hostname
+    port: # redis端口
+    password: # redis密码
+  datasource:
+    url: # 数据库URL，如 jdbc:mysql://localhost:3306/codemaster
+    username: # 数据库账号
+    password: # 数据库密码

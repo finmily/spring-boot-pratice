@@ -1,0 +1,21 @@
+server:
+  port:  8000
+  tomcat:
+    accesslog:
+      directory: ./log
+spring:
+  redis:
+    host: # redis hostname
+    port: # redis端口
+    password: # redis密码
+  datasource:
+    url: # 数据库URL，如 jdbc:mysql://localhost:3306/codemaster
+    username: # 数据库账号
+    password: # 数据库密码
+  data:
+    mongodb:
+      host: 127.0.0.1
+      password: 111111
+      username: root
+      database: admin
+      port: 29017

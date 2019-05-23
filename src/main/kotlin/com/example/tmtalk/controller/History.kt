@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-
-
+import reactor.core.publisher.Mono
 
 @RequestMapping("/history")
 @RestController
-class History {
+class History(
+    val mongoClient: MongoClient
+) {
 
     @PostMapping
     fun addRecord(
@@ -23,10 +24,10 @@ class History {
     }
 
     @GetMapping
-    fun listRecord(): Any? {
+    fun listRecord(): Mono<ImRecord> {
 
-        val mongoOps = MongoTemplate(MongoClient(), "skills")
+        val mongoOps = MongoTemplate(mongoClient, "skills")
 
-        return mongoOps.getCollection("im_records").find().limit(10)
+        return Mono.create()mongoOps.getCollection("im_records").find().limit(10)
     }
 }
